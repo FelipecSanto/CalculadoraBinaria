@@ -1,0 +1,44 @@
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+
+entity SB is
+	Port ( 
+		A : in STD_LOGIC;
+      B : in STD_LOGIC;
+      Cin : in STD_LOGIC;
+      Ctrl : in STD_LOGIC;
+      Sel : in STD_LOGIC;
+      Result : out STD_LOGIC;
+      Cout : out STD_LOGIC
+	);
+end SB;
+
+architecture Shift_Subtract of SB is
+    signal Sum : STD_LOGIC;
+    signal Mux_Out : STD_LOGIC;
+	 
+begin
+
+    -- Instanciação do bloco add_sub
+	U1: entity work.Add_Sub
+		Port map ( 
+			A => A,
+         B => Ctrl xor B,
+         Cin => Cin,
+         Result => Sum,
+         Cout => Cout 
+	);
+
+    -- Instanciação do multiplexador (nível de portas)
+	U2: entity work.MUX_Gate_Level
+		Port map ( 
+			sel => Sel,
+         in0 => Sum,
+         in1 => A,
+         saida => Mux_Out 
+	);
+
+    -- Conectar a saída do MUX à saída final
+	Result <= Mux_Out;
+
+end Shift_Subtract;

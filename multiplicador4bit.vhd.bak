@@ -1,0 +1,24 @@
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+use IEEE.STD_LOGIC_ARITH.ALL;
+use IEEE.STD_LOGIC_UNSIGNED.ALL;
+use IEEE.STD_LOGIC_TEXTIO.ALL;
+use STD.TEXTIO.ALL;
+use IEEE.NUMERIC_STD.ALL;
+
+entity multiplicador4bit is
+	Port (
+		A : in STD_LOGIC_VECTOR (3 downto 0);
+      B : in STD_LOGIC_VECTOR (3 downto 0);
+      P : out STD_LOGIC_VECTOR (7 downto 0)
+	);
+end multiplicador4bit;
+
+architecture multiplicacao of multiplicador4bit is
+	
+	
+begin
+	
+	
+
+end multiplicacao;

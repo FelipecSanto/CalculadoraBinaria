@@ -1,0 +1,28 @@
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+
+entity Simb_Opera is
+    Port (
+        Sel : in STD_LOGIC_VECTOR (1 downto 0);
+        Saida : out STD_LOGIC_VECTOR (13 downto 0)
+    );
+end Simb_Opera;
+
+architecture Behavioral of Simb_Opera is
+begin
+    process (Sel)
+    begin
+        case Sel is
+            when "00" =>
+                Saida <= "01110010001111";
+            when "01" =>
+                Saida <= "01111110111111";
+            when "10" =>
+                Saida <= "11100001000110";
+            when "11" =>
+                Saida <= "11100011001110";
+            when others =>
+                Saida <= (others => '0'); -- Default case
+        end case;
+    end process;
+end Behavioral;
